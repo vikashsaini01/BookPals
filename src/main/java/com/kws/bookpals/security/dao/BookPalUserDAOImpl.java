@@ -7,9 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kws.bookpals.model.BookPalUser;
-import com.kws.bookpals.model.BookPalUser_NoPassword;
-import com.kws.bookpals.model.UserPassword;
+import com.kws.bookpals.entity.BookPalUser;
+import com.kws.bookpals.entity.UserPassword;
 
 @Repository
 public class BookPalUserDAOImpl implements BookPalUserDAO {
@@ -28,7 +27,7 @@ public class BookPalUserDAOImpl implements BookPalUserDAO {
 	@Override
 	public void addBookPalUser(BookPalUser p) {
 		Session session = this.sessionFactory.getCurrentSession();
-		p.encodePass();
+		//p.encodePass();
 		session.persist(p);
 		logger.info("BookPalUser saved successfully, User Details=" + p);
 	}
@@ -56,26 +55,7 @@ public class BookPalUserDAOImpl implements BookPalUserDAO {
 
 	}
 
-	@Override
-	public void updateBookPalUser_NoPassword(BookPalUser_NoPassword p) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(p);
-		logger.info("BookPalUser_NoPassword updated successfully, BookPalUser_NoPassword Details="
-				+ p);
-	}
-
-	@Override
-	public BookPalUser_NoPassword getBookPalUser_NoPasswordByUserName(
-			String username) {
-
-		Session session = this.sessionFactory.getCurrentSession();
-		BookPalUser_NoPassword p = (BookPalUser_NoPassword) session.get(
-				BookPalUser_NoPassword.class, new String(username));
-		logger.info("BookPalUser_NoPassword loaded successfully, BookPalUser details="
-				+ p);
-		return p;
-	}
-
+	
 	@Override
 	public void updateBookPalUserPassword(UserPassword userPassword) {
 		Session session = this.sessionFactory.getCurrentSession();

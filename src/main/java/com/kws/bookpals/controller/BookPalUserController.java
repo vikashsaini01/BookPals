@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.kws.bookpals.model.BookPalUser;
+import com.kws.bookpals.entity.BookPalUser;
 import com.kws.bookpals.security.dao.AppUserDetail;
 import com.kws.bookpals.service.BookPalUserService;
 import com.kws.bookpals.service.CityService;

@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kws.bookpals.model.BookPalUser;
-import com.kws.bookpals.model.BookPalUser_NoPassword;
-import com.kws.bookpals.model.UserPassword;
+import com.kws.bookpals.entity.BookPalUser;
+import com.kws.bookpals.entity.UserPassword;
 import com.kws.bookpals.security.dao.BookPalUserDAO;
 
 @Service
@@ -54,19 +53,7 @@ public class BookPalUserServiceImpl implements BookPalUserService {
 		this.bookPalUserDAO.updateBookPalUser(p);
 	}
 
-	@Override
-	@Transactional
-	public void updateBookPalUser_NoPassword(BookPalUser_NoPassword p) {
-		this.bookPalUserDAO.updateBookPalUser_NoPassword(p);
-	}
-
-	@Override
-	@Transactional
-	public BookPalUser_NoPassword getBookPalUser_NoPasswordByUserName(
-			String username) {
-		return this.getBookPalUser_NoPasswordByUserName(username);
-	}
-
+	
 	@Override
 	@Transactional
 	public void updateBookPalUserPassword(UserPassword userPassword) {

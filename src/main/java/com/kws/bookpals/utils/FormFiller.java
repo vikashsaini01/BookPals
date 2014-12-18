@@ -9,7 +9,7 @@ import java.util.Map;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kws.bookpals.model.City;
+import com.kws.bookpals.entity.City;
 import com.kws.bookpals.service.CityService;
 
 public final class FormFiller {

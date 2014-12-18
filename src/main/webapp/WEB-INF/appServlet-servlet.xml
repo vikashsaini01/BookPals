@@ -27,7 +27,7 @@
         destroy-method="close">
  
         <beans:property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-        <beans:property name="url" value="jdbc:sqlserver://localhost:50392;databasename=ShareBooks" />
+        <beans:property name="url" value="jdbc:sqlserver://localhost:50392;databasename=ShareBooks1" />
         <beans:property name="username" value="vika" />
         <beans:property name="password" value="password" />
     </beans:bean>	
@@ -36,16 +36,17 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>com.kws.bookpals.model.BookPalUser</beans:value>
+                <beans:value>com.kws.bookpals.entity.BookPalUser</beans:value>
                 <beans:value>com.kws.bookpals.model.BookPalUser_NoPassword</beans:value>
-                <beans:value>com.kws.bookpals.model.City</beans:value>
-                <beans:value>com.kws.bookpals.model.UserPassword</beans:value>
+                <beans:value>com.kws.bookpals.entity.City</beans:value>
+                <beans:value>com.kws.bookpals.entity.UserPassword</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
             <beans:props>
                 <beans:prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</beans:prop>
                 <beans:prop key="hibernate.show_sql">true</beans:prop>
+                <beans:prop key="hibernate.hbmdl.auto">update</beans:prop>
             </beans:props>
         </beans:property>
     </beans:bean>     

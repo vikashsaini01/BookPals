@@ -1,4 +1,4 @@
-package com.kws.bookpals.model;
+package com.kws.bookpals.entity;
 
 import java.util.Date;
 
@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.kws.bookpals.utils.Gender;
 
 @Entity
 @Table(name = "book_users")
@@ -33,6 +35,7 @@ public class BookPalUser {
 	private String state;
 	private Date updatedate;
 	@Id
+	private int id;
 	private String username;
 	private String yearofbirth;
 	private String zipcode;
@@ -205,11 +208,6 @@ public class BookPalUser {
 	public void setMonthofbirth(String monthofbirth) {
 		this.monthofbirth = monthofbirth;
 	}
-
-	
-	
-	
-	/* Constructors */
 
 	public BookPalUser() {
 	

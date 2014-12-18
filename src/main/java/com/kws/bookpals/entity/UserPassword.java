@@ -1,4 +1,4 @@
-package com.kws.bookpals.model;
+package com.kws.bookpals.entity;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;

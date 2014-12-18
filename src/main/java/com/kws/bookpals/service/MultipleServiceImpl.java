@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kws.bookpals.dao.CityDAO;
-import com.kws.bookpals.model.City;
+import com.kws.bookpals.entity.City;
 
 @Service
 public class MultipleServiceImpl implements CityService {
