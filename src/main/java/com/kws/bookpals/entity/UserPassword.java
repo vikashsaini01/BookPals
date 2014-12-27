@@ -1,20 +1,12 @@
 package com.kws.bookpals.entity;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 
-@Entity
-@Table(name = "book_users")
-@Embeddable
 public class UserPassword {
 
-	@Id
 	private String username;
 	public String getUsername() {
 		return username;

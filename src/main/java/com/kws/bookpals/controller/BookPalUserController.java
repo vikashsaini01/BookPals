@@ -51,7 +51,7 @@ public class BookPalUserController {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
 
-	@RequestMapping(value = "/bookuser/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/bookuser/add" , method = RequestMethod.POST)
 	public String addBookPalUser(@ModelAttribute(C.BOOKPALUSER) BookPalUser p,
 			Model model) {
 		logger.info(" add");

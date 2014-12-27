@@ -57,10 +57,10 @@
 									<td><form:label path="username">Mobile No:</form:label></td>
 									<td><form:input type='text' path='username' /></td>
 								</tr>
-								<tr>
-									<td><form:label path="password">Password:</form:label></td>
-									<td><form:password path='password' /></td>
-								</tr>
+<!-- 								<tr> -->
+<%-- 									<td><form:label path="password">Password:</form:label></td> --%>
+<%-- 									<td><form:password path='password' /></td> --%>
+<!-- 								</tr> -->
 								<tr>
 									<td><form:label path="gender">Gender:</form:label></td>
 									<td><form:radiobutton path='gender' value="M" />Male
@@ -73,21 +73,22 @@
 											<form:options items="${yearlist}" />
 										</form:select></td>
 								</tr>
-								<tr>
-									<td><form:label path="city">City:</form:label></td>
-									<td><form:select path='city'>
-											<form:option value="0" label="Select" />
-											<form:options items="${cityList}" itemValue="city"
-												itemLabel="city" />
-										</form:select></td>
-								</tr>
+<!-- 								<tr> -->
+<%-- 									<td><form:label path="city">City:</form:label></td> --%>
+<%-- 									<td><form:select path='city'> --%>
+<%-- 											<form:option value="0" label="Select" /> --%>
+<%-- 											<form:options items="${cityList}" itemValue="city" --%>
+<%-- 												itemLabel="city" /> --%>
+<%-- 										</form:select></td> --%>
+<!-- 								</tr> -->
 								<tr>
 									<td><form:label path="landmark">I live near by:</form:label></td>
 									<td><form:input path='landmark' /></td>
 								</tr>
 								<tr>
-									<td colspan='2'><form:hidden path="role" /> <input
-										name="submit" type="submit" value="Sign Up" /></td>
+									<td colspan='2'>
+<%-- 									<form:hidden path="role" />  --%>
+									<input name="submit" type="submit" value="Sign Up" /></td>
 								</tr>
 							</table>
 						</form:form>

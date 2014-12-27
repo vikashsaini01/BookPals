@@ -2,16 +2,21 @@ package com.kws.bookpals.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
-@Table(name = "bookpal_login")
-public class bookpal_login {
+@Table(name = "bookPalLogin")
+public class BookPalLogin {
 	
-	@OneToOne  
+	@OneToOne(mappedBy="bookPalLogin")
+	@Cascade(value=CascadeType.ALL)
 	private BookPalUser bookPalUser;
 	
 	private Date insertdate;
@@ -23,19 +28,20 @@ public class bookpal_login {
 	private Date updatedate;
 	
 	@Id
+	@Column(name="username")
 	private String username;
 	
-	public bookpal_login() {
+	public BookPalLogin() {
 	
 	}
 
-	public bookpal_login(String username) {
+	public BookPalLogin(String username) {
 		this();
 		this.username = username;
 	}
 
 		
-	public bookpal_login(String username, String role) {
+	public BookPalLogin(String username, String role) {
 		this(username);
 		this.role = role;
 	}

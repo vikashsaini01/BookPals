@@ -1,5 +1,7 @@
 package com.kws.bookpals.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kws.bookpals.entity.bookpal_login;
+import com.kws.bookpals.entity.BookPalUser;
 import com.kws.bookpals.model.LoginProps;
 import com.kws.bookpals.service.CityService;
 import com.kws.bookpals.utils.C;
@@ -45,6 +48,10 @@ public class HomeController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	    sdf.setLenient(true);
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
 
 	@RequestMapping(value = { "/home", "/" }, method = RequestMethod.GET)
@@ -57,7 +64,7 @@ public class HomeController {
 	public ModelAndView loginGet(@PathVariable("userid") String userid) {
 		logger.info(" login");
 		ModelAndView modelAndView = new ModelAndView(C.VIEW_LOGIN);
-		modelAndView.addObject(C.BOOKPALUSER, new bookpal_login(C.EMPTY_STRING, C.ROLE_USER));
+		modelAndView.addObject(C.BOOKPALUSER, new BookPalUser(C.EMPTY_STRING, C.ROLE_USER));
 		modelAndView.addObject(C.LOGIN_PROPS, new LoginProps(userid));
 		FormFiller.fillCityDropDowns(cityService, modelAndView);
 		FormFiller.fillBirthYearDropDown(modelAndView);
@@ -68,7 +75,7 @@ public class HomeController {
 	public ModelAndView login() {
 		logger.info(" login");
 		ModelAndView modelAndView = new ModelAndView(C.VIEW_LOGIN);
-		modelAndView.addObject(C.BOOKPALUSER, new bookpal_login(C.EMPTY_STRING,	C.ROLE_USER));
+		modelAndView.addObject(C.BOOKPALUSER, new BookPalUser(C.EMPTY_STRING,	C.ROLE_USER));
 		modelAndView.addObject(C.LOGIN_PROPS, new LoginProps());
 		FormFiller.fillCityDropDowns(cityService, modelAndView);
 		FormFiller.fillBirthYearDropDown(modelAndView);

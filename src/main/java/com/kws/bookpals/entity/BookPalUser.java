@@ -2,24 +2,36 @@ package com.kws.bookpals.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import com.kws.bookpals.utils.Gender;
 
 @Entity
-@Table(name = "book_users")
+@Table(name = "bookPalUser")
 public class BookPalUser {
 	
-	@OneToOne(mappedBy = "bookpal_login")
+	@OneToOne
 	@PrimaryKeyJoinColumn
-	private bookpal_login bookpal_login;
-	private String city;
+	@Cascade(value=CascadeType.ALL)
+	private BookPalLogin bookPalLogin;
+	@ManyToOne
+	@JoinColumn(name="city")
+	private City city;
 	private String completeaddress;
 	private String country;
 	private String countrycode;
@@ -35,19 +47,21 @@ public class BookPalUser {
 	private String state;
 	private Date updatedate;
 	@Id
-	private int id;
+	@Column(name="username") 
+	@GeneratedValue(generator="gen")
+    @GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="bookPalLogin")})
 	private String username;
 	private String yearofbirth;
 	private String zipcode;
 	private String firstname;
 	private String lastname;
 
-	public bookpal_login getBookpal_login() {
-		return bookpal_login;
+	public BookPalLogin getBookpalLogin() {
+		return bookPalLogin;
 	}
 
-	public void setBookpal_login(bookpal_login bookpal_login) {
-		this.bookpal_login = bookpal_login;
+	public void setBookpalLogin(BookPalLogin bookpal_login) {
+		this.bookPalLogin = bookpal_login;
 	}
 
 	public String getFirstname() {
@@ -66,7 +80,7 @@ public class BookPalUser {
 		this.lastname = lastname;
 	}
 
-	public String getCity() {
+	public City getCity() {
 		return this.city;
 	}
 
@@ -130,7 +144,7 @@ public class BookPalUser {
 		return this.zipcode;
 	}
 
-	public void setCity(String city) {
+	public void setCity(City city) {
 		this.city = city;
 	}
 
@@ -212,9 +226,30 @@ public class BookPalUser {
 	public BookPalUser() {
 	
 	}
-	public BookPalUser(String username) {
-		this();
+	public BookPalUser(String username, String role) {
+		this.bookPalLogin = new BookPalLogin(username, role);
 		this.username = username;
 	}
+	
+	public String getPassword()
+	{
+		return this.getBookpalLogin().getPassword();
+	}
+	
+	public String getRole()
+	{
+		return this.getBookpalLogin().getRole();
+	}
+	
+	public void setPassword(String password)
+	{
+		this.getBookpalLogin().setPassword(password);
+	}
+	
+	public void setRole(String role)
+	{
+		this.getBookpalLogin().setRole(role);
+	}
+
 
 }
