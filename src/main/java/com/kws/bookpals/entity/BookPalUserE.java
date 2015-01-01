@@ -20,7 +20,7 @@ public class BookPalUserE {
 	
 	@ManyToOne
 	@JoinColumn(name="city")
-	private City city;
+	private CityE city;
 	private String completeaddress;
 	private String country;
 	private String role;
@@ -61,7 +61,7 @@ public class BookPalUserE {
 		this.lastname = lastname;
 	}
 
-	public City getCity() {
+	public CityE getCity() {
 		return this.city;
 	}
 
@@ -125,7 +125,7 @@ public class BookPalUserE {
 		return this.zipcode;
 	}
 
-	public void setCity(City city) {
+	public void setCity(CityE city) {
 		this.city = city;
 	}
 

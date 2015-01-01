@@ -38,7 +38,7 @@
             <beans:list>
                 <beans:value>com.kws.bookpals.entity.BookPalUserE</beans:value>
                 <beans:value>com.kws.bookpals.entity.BookPalLogin</beans:value>
-                <beans:value>com.kws.bookpals.entity.City</beans:value>
+                <beans:value>com.kws.bookpals.entity.CityE</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">

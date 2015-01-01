@@ -6,12 +6,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cities")
-public class City {
+public class CityE {
 	String code;
 	@Id
 	String city;
 
-	public City() {
+	public CityE() {
 	}
 
 	public String getCode() {
@@ -30,7 +30,7 @@ public class City {
 		this.city = city;
 	}
 
-	public City(String code, String city) {
+	public CityE(String code, String city) {
 		this.code = code;
 		this.city = city;
 	}

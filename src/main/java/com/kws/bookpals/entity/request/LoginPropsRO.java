@@ -1,15 +1,15 @@
 package com.kws.bookpals.entity.request;
 
-public class LoginProps {
+public class LoginPropsRO {
 	private String i_username;
 	private String i_password;
 
-	public LoginProps(String i_username) {
+	public LoginPropsRO(String i_username) {
 		super();
 		this.i_username = i_username;
 	}
 
-	public LoginProps() {
+	public LoginPropsRO() {
 		super();
 	}
 

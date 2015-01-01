@@ -22,9 +22,9 @@ public class AppUserDetail implements UserDetails {
 
 	public AppUserDetail(BookPalUserE bookPalUser) {
 		this.username = bookPalUser.getUsername();
-		this.password = bookPalUser.getBookpalLogin().getPassword();
+		this.password = bookPalUser.getPassword();
 		this.authorities = new java.util.ArrayList<SimpleGrantedAuthority>();
-		this.authorities.add(new SimpleGrantedAuthority(bookPalUser.getBookpalLogin().getRole()));
+		this.authorities.add(new SimpleGrantedAuthority(bookPalUser.getRole()));
 		this.bookPalUser = bookPalUser;
 	}
 

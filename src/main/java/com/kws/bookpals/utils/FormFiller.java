@@ -9,7 +9,7 @@ import java.util.Map;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kws.bookpals.entity.City;
+import com.kws.bookpals.entity.CityE;
 import com.kws.bookpals.service.CityService;
 
 public final class FormFiller {
@@ -27,7 +27,7 @@ public final class FormFiller {
 		model.addAttribute(C.CITYLIST, fillCityDropDowns(cityService));
 	}
 
-	private static List<City> fillCityDropDowns(CityService cityService) {
+	private static List<CityE> fillCityDropDowns(CityService cityService) {
 		return cityService.getAllCities();
 	}
 

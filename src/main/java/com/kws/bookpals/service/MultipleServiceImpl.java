@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kws.bookpals.dao.CityDAO;
-import com.kws.bookpals.entity.City;
+import com.kws.bookpals.entity.CityE;
 
 @Service
 public class MultipleServiceImpl implements CityService {
@@ -22,7 +22,7 @@ public class MultipleServiceImpl implements CityService {
 
 	@Override
 	@Transactional
-	public List<City> getAllCities() {
+	public List<CityE> getAllCities() {
 		return this.cityDAO.getAllCities();
 	}
 

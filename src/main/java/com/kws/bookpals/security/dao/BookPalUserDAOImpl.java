@@ -1,30 +1,37 @@
 package com.kws.bookpals.security.dao;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kws.bookpals.entity.BookPalUserE;
 import com.kws.bookpals.entity.UserPassword;
+import com.kws.bookpalsfwk.dao.BasicCRUDImpl;
 
 @Repository
-public class BookPalUserDAOImpl implements BookPalUserDAO {
+public class BookPalUserDAOImpl extends BasicCRUDImpl<BookPalUserE, String> implements BookPalUserDAO {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(BookPalUserDAOImpl.class);
 
-	@Autowired
-	private SessionFactory sessionFactory;
+	
+	
+	@Override
+	public void removeBookPalUser(String username) {
+		logger.info("BookPalUser remove not implemented. Contact Admin.");
 
-	@Autowired
-	public void setSessionFactory(SessionFactory sf) {
-		this.sessionFactory = sf;
 	}
 
+	
 	@Override
+	public void updateBookPalUserPassword(UserPassword userPassword) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(userPassword);
+		logger.info("BookPalUser userPassword updated successfully");
+	}
+	
+/*	@Override
 	public void addBookPalUser(BookPalUserE p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		//p.encodePass();
@@ -48,18 +55,6 @@ public class BookPalUserDAOImpl implements BookPalUserDAO {
 		logger.info("BookPalUser loaded successfully, BookPalUser details=" + p);
 		return p;
 	}
+*/
 
-	@Override
-	public void removeBookPalUser(String username) {
-		logger.info("BookPalUser remove not implemented. Contact Admin.");
-
-	}
-
-	
-	@Override
-	public void updateBookPalUserPassword(UserPassword userPassword) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(userPassword);
-		logger.info("BookPalUser userPassword updated successfully");
-	}
 }

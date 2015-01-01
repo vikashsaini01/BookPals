@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kws.bookpals.entity.request.BookPalUserRO;
-import com.kws.bookpals.entity.request.LoginProps;
+import com.kws.bookpals.entity.request.LoginPropsRO;
 import com.kws.bookpals.service.CityService;
 import com.kws.bookpals.utils.C;
 import com.kws.bookpals.utils.FormFiller;
@@ -76,7 +76,7 @@ public class HomeController {
 		logger.info(" login");
 		ModelAndView modelAndView = new ModelAndView(C.VIEW_LOGIN);
 		modelAndView.addObject(C.BOOKPALUSER, new BookPalUserRO());
-		modelAndView.addObject(C.LOGIN_PROPS, new LoginProps(userid));
+		modelAndView.addObject(C.LOGIN_PROPS, new LoginPropsRO(userid));
 		FormFiller.fillCityDropDowns(cityService, modelAndView);
 		FormFiller.fillBirthYearDropDown(modelAndView);
 		return modelAndView; 
@@ -90,7 +90,7 @@ public class HomeController {
 		logger.info(" login");
 		ModelAndView modelAndView = new ModelAndView(C.VIEW_LOGIN);
 		modelAndView.addObject(C.BOOKPALUSER, new BookPalUserRO());
-		modelAndView.addObject(C.LOGIN_PROPS, new LoginProps());
+		modelAndView.addObject(C.LOGIN_PROPS, new LoginPropsRO());
 		FormFiller.fillCityDropDowns(cityService, modelAndView);
 		FormFiller.fillBirthYearDropDown(modelAndView);
 		return modelAndView;

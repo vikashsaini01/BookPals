@@ -2,8 +2,8 @@ package com.kws.bookpals.service;
 
 import java.util.List;
 
-import com.kws.bookpals.entity.City;
+import com.kws.bookpals.entity.CityE;
 
 public interface CityService {
-	public List<City> getAllCities();
+	public List<CityE> getAllCities();
 }
