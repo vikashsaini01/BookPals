@@ -36,7 +36,7 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>com.kws.bookpals.entity.BookPalUser</beans:value>
+                <beans:value>com.kws.bookpals.entity.BookPalUserE</beans:value>
                 <beans:value>com.kws.bookpals.entity.BookPalLogin</beans:value>
                 <beans:value>com.kws.bookpals.entity.City</beans:value>
             </beans:list>

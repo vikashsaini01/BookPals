@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
-import com.kws.bookpals.entity.BookPalUser;
+import com.kws.bookpals.entity.BookPalUserE;
 import com.kws.bookpals.service.BookPalUserService;
 
 @Repository
@@ -35,7 +35,7 @@ public class AppUserDetailsServiceDAO implements UserDetailsService,
 			throws UsernameNotFoundException {
 		logger.info("loadUserByUsername username=" + username);
 		UserDetails userDetails = null;
-		BookPalUser bookPalUser = this.bookPalUserService
+		BookPalUserE bookPalUser = this.bookPalUserService
 				.getBookPalUserByUserName(username);
 		userDetails = new AppUserDetail(bookPalUser);
 		return userDetails;

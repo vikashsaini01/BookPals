@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kws.bookpals.entity.BookPalUser;
-import com.kws.bookpals.model.LoginProps;
+import com.kws.bookpals.entity.request.BookPalUserRO;
+import com.kws.bookpals.entity.request.LoginProps;
 import com.kws.bookpals.service.CityService;
 import com.kws.bookpals.utils.C;
 import com.kws.bookpals.utils.FormFiller;
@@ -30,21 +30,26 @@ import com.kws.bookpals.utils.FormFiller;
 @Controller
 public class HomeController {
 
-	/* Class Variables Start */
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 
+	
+	
 	@Autowired
 	private CityService cityService;
 
-	/* Class Variables End */
+	
+	
+	
 
 	@Autowired
 	public void setCityService(CityService cityService) {
 		this.cityService = cityService;
 	}
 
+	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
@@ -53,6 +58,8 @@ public class HomeController {
 	    sdf.setLenient(true);
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
+	
+	
 
 	@RequestMapping(value = { "/home", "/" }, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
@@ -60,43 +67,60 @@ public class HomeController {
 		return C.VIEW_HOME;
 	}
 
+
+	
+	
+	
 	@RequestMapping(value = "/login/get/{userid}")
 	public ModelAndView loginGet(@PathVariable("userid") String userid) {
 		logger.info(" login");
 		ModelAndView modelAndView = new ModelAndView(C.VIEW_LOGIN);
-		modelAndView.addObject(C.BOOKPALUSER, new BookPalUser(C.EMPTY_STRING, C.ROLE_USER));
+		modelAndView.addObject(C.BOOKPALUSER, new BookPalUserRO());
 		modelAndView.addObject(C.LOGIN_PROPS, new LoginProps(userid));
 		FormFiller.fillCityDropDowns(cityService, modelAndView);
 		FormFiller.fillBirthYearDropDown(modelAndView);
 		return modelAndView; 
 	}
 
+	
+	
+	
 	@RequestMapping(value = "/login")
 	public ModelAndView login() {
 		logger.info(" login");
 		ModelAndView modelAndView = new ModelAndView(C.VIEW_LOGIN);
-		modelAndView.addObject(C.BOOKPALUSER, new BookPalUser(C.EMPTY_STRING,	C.ROLE_USER));
+		modelAndView.addObject(C.BOOKPALUSER, new BookPalUserRO());
 		modelAndView.addObject(C.LOGIN_PROPS, new LoginProps());
 		FormFiller.fillCityDropDowns(cityService, modelAndView);
 		FormFiller.fillBirthYearDropDown(modelAndView);
 		return modelAndView;
 	}
 
+	
+	
+	
 	@RequestMapping(value = "/logout")
 	public String logout() {
 		logger.info(" logout");
 		return C.VIEW_LOGOUT;
 	}
 
+	
+	
+	
 	@RequestMapping(value = "/emp/session")
 	public String session(HttpServletRequest request, Model model) {
 		logger.info(" usersession");
 		return "usersession";
 	}
 
-	@RequestMapping(value = "/denied")
+	
+	
+	
+	@RequestMapping(value = "/denied")	
 	public String denied() {
 		logger.info(" denied");
 		return "denied";
 	}
+	
 }

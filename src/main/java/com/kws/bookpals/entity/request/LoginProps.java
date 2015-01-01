@@ -1,4 +1,4 @@
-package com.kws.bookpals.model;
+package com.kws.bookpals.entity.request;
 
 public class LoginProps {
 	private String i_username;

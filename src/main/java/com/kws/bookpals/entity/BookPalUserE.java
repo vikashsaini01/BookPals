@@ -6,34 +6,25 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-
+import com.kws.bookpals.entity.request.BookPalUserRO;
 import com.kws.bookpals.utils.Gender;
 
 @Entity
 @Table(name = "bookPalUser")
-public class BookPalUser {
+public class BookPalUserE {
 	
-	@OneToOne
-	@PrimaryKeyJoinColumn
-	@Cascade(value=CascadeType.ALL)
-	private BookPalLogin bookPalLogin;
 	@ManyToOne
 	@JoinColumn(name="city")
 	private City city;
 	private String completeaddress;
 	private String country;
+	private String role;
+	private String password;
 	private String countrycode;
 	private Date deletedate;
 	private String dayofbirth;
@@ -48,21 +39,11 @@ public class BookPalUser {
 	private Date updatedate;
 	@Id
 	@Column(name="username") 
-	@GeneratedValue(generator="gen")
-    @GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="bookPalLogin")})
 	private String username;
 	private String yearofbirth;
 	private String zipcode;
 	private String firstname;
 	private String lastname;
-
-	public BookPalLogin getBookpalLogin() {
-		return bookPalLogin;
-	}
-
-	public void setBookpalLogin(BookPalLogin bookpal_login) {
-		this.bookPalLogin = bookpal_login;
-	}
 
 	public String getFirstname() {
 		return this.firstname;
@@ -223,33 +204,39 @@ public class BookPalUser {
 		this.monthofbirth = monthofbirth;
 	}
 
-	public BookPalUser() {
+	public BookPalUserE() {
 	
 	}
-	public BookPalUser(String username, String role) {
-		this.bookPalLogin = new BookPalLogin(username, role);
+	public BookPalUserE(String username, String role) {
+		this.role = role;
 		this.username = username;
 	}
 	
 	public String getPassword()
 	{
-		return this.getBookpalLogin().getPassword();
+		return this.password;
 	}
 	
 	public String getRole()
 	{
-		return this.getBookpalLogin().getRole();
+		return this.role;
 	}
 	
 	public void setPassword(String password)
 	{
-		this.getBookpalLogin().setPassword(password);
+		this.password = password;
 	}
 	
 	public void setRole(String role)
 	{
-		this.getBookpalLogin().setRole(role);
+		this.role = role;
 	}
 
+	public BookPalUserRO getBookPalUserRO()
+	{
+		BookPalUserRO bookPalUserRO = new BookPalUserRO();
+		bookPalUserRO.setBookPalUserRO(this);
+		return bookPalUserRO;
+	}
 
 }

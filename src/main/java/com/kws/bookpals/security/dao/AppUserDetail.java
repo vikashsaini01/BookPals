@@ -6,7 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.kws.bookpals.entity.BookPalUser;
+import com.kws.bookpals.entity.BookPalUserE;
 
 public class AppUserDetail implements UserDetails {
 
@@ -18,9 +18,9 @@ public class AppUserDetail implements UserDetails {
 
 	private Collection<SimpleGrantedAuthority> authorities;
 
-	private BookPalUser bookPalUser;
+	private BookPalUserE bookPalUser;
 
-	public AppUserDetail(BookPalUser bookPalUser) {
+	public AppUserDetail(BookPalUserE bookPalUser) {
 		this.username = bookPalUser.getUsername();
 		this.password = bookPalUser.getBookpalLogin().getPassword();
 		this.authorities = new java.util.ArrayList<SimpleGrantedAuthority>();
@@ -28,7 +28,7 @@ public class AppUserDetail implements UserDetails {
 		this.bookPalUser = bookPalUser;
 	}
 
-	public BookPalUser getBookPalUser() {
+	public BookPalUserE getBookPalUser() {
 		return bookPalUser;
 	}
 
