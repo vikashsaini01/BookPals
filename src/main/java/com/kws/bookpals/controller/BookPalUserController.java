@@ -60,8 +60,14 @@ public class BookPalUserController {
 	@RequestMapping(value = "/bookuser/add" , method = RequestMethod.POST)
 	public String addBookPalUser(@ModelAttribute(C.BOOKPALUSER) BookPalUserRO p,
 			Model model) {
-		this.bookPalUserService.addBookPalUser(p.getBookPalUser(null));
-		return "redirect:/login/get/" + p.getUsername();
+		
+		try{
+			this.bookPalUserService.insert(p.getBookPalUser(null));
+			return "redirect:/login/get/" + p.getUsername();
+		}
+		catch(Exception exception)
+		{}
+		return "redirect:/login";
 	}
 
 	
@@ -70,10 +76,12 @@ public class BookPalUserController {
 	public String updateBookPalUser(
 			@ModelAttribute(C.BOOKPALUSER) BookPalUserRO p,
 			SessionStatus sessionStatus) {
-		this.bookPalUserService.updateBookPalUser(p.getBookPalUser());
+		try {
+			this.bookPalUserService.update(p.getBookPalUser());
+		} catch (Exception ex) {
+		}
 		return C.VIEW_HOME;
 	}
-
 	
 	
 	
@@ -96,8 +104,12 @@ public class BookPalUserController {
 	
 	@RequestMapping("bookuser/remove")
 	public String removePerson(@ModelAttribute(C.BOOKPALUSER) BookPalUserE p) {
-		logger.info(" remove");
-		this.bookPalUserService.removeBookPalUser(p);
+		try{
+		this.bookPalUserService.delete(p);
+		}
+		catch(Exception exception){
+			
+		}
 		return "userdelete";
 	}
 }

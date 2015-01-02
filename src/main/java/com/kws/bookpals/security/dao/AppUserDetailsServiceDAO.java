@@ -33,11 +33,14 @@ public class AppUserDetailsServiceDAO implements UserDetailsService,
 	@Override
 	public UserDetails loadUserByUsername(final String username)
 			throws UsernameNotFoundException {
-		logger.info("loadUserByUsername username=" + username);
 		UserDetails userDetails = null;
-		BookPalUserE bookPalUser = this.bookPalUserService
-				.getBookPalUserByUserName(username);
-		userDetails = new AppUserDetail(bookPalUser);
+		try {
+			BookPalUserE bookPalUser = this.bookPalUserService
+					.findById(username);
+			userDetails = new AppUserDetail(bookPalUser);
+		} catch (Exception exception) {
+
+		}
 		return userDetails;
 	}
 

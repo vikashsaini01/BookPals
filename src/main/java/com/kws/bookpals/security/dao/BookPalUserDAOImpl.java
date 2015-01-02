@@ -16,14 +16,6 @@ public class BookPalUserDAOImpl extends BasicCRUDImpl<BookPalUserE, String> impl
 			.getLogger(BookPalUserDAOImpl.class);
 
 	
-	
-	@Override
-	public void removeBookPalUser(String username) {
-		logger.info("BookPalUser remove not implemented. Contact Admin.");
-
-	}
-
-	
 	@Override
 	public void updateBookPalUserPassword(UserPassword userPassword) {
 		Session session = this.sessionFactory.getCurrentSession();

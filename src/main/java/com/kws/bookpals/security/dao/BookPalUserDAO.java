@@ -6,7 +6,5 @@ import com.kws.bookpalsfwk.dao.BasicCRUD;
 
 public interface BookPalUserDAO extends BasicCRUD<BookPalUserE, String> {
 	
-	public void removeBookPalUser(String username);
-
 	public void updateBookPalUserPassword(UserPassword userPassword);
 }
