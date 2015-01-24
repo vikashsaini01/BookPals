@@ -3,6 +3,7 @@
 	<name>BookPals</name>
 	<comment></comment>
 	<projects>
+		<project>BookPalsFWK</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

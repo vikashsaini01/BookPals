@@ -61,13 +61,10 @@ public class BookPalUserController {
 	public String addBookPalUser(@ModelAttribute(C.BOOKPALUSER) BookPalUserRO p,
 			Model model) {
 		
-		try{
+		
 			this.bookPalUserService.insert(p.getBookPalUser(null));
 			return "redirect:/login/get/" + p.getUsername();
-		}
-		catch(Exception exception)
-		{}
-		return "redirect:/login";
+		
 	}
 
 	

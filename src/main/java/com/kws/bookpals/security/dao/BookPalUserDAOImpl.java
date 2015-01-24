@@ -23,30 +23,11 @@ public class BookPalUserDAOImpl extends BasicCRUDImpl<BookPalUserE, String> impl
 		logger.info("BookPalUser userPassword updated successfully");
 	}
 	
-/*	@Override
-	public void addBookPalUser(BookPalUserE p) {
-		Session session = this.sessionFactory.getCurrentSession();
-		//p.encodePass();
-		session.persist(p);
-		logger.info("BookPalUser saved successfully, User Details=" + p);
-	}
-
 	@Override
-	public void updateBookPalUser(BookPalUserE p) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(p);
-		logger.info("BookPalUser updated successfully, BookPalUser Details="
-				+ p);
+	public BookPalUserE insert(BookPalUserE object)
+	{
+		sessionFactory.getCurrentSession().save(object);
+		return object;
 	}
-
-	@Override
-	public BookPalUserE getBookPalUserByUserName(String username) {
-		Session session = this.sessionFactory.getCurrentSession();
-		BookPalUserE p = (BookPalUserE) session.get(BookPalUserE.class,
-				new String(username));
-		logger.info("BookPalUser loaded successfully, BookPalUser details=" + p);
-		return p;
-	}
-*/
 
 }

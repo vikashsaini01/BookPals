@@ -1,6 +1,6 @@
 package com.kws.bookpals.service;
 
-import java.util.Date;
+import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +30,16 @@ public class BookPalUserServiceImpl extends BasicServiceImpl<BookPalUserE, Strin
 	
 	
 	@Override
+	@PostConstruct
 	public void setupService() {
 		this.basicCRUD = bookPalUserDAO ;
 		this.clazz = BookPalUserE.class;
 		this.basicCRUD.setupEntityClass(BookPalUserE.class);
+	}
+	
+	
+	@Override
+	public BookPalUserE insert(BookPalUserE object)  {
+		return basicCRUD.insert(object);
 	}
 }

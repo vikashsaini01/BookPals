@@ -28,7 +28,7 @@ public class MultipleDAOImpl implements CityDAO {
 	@Override
 	public List<CityE> getAllCities() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<CityE> cities = session.createQuery(" from City").list();
+		List<CityE> cities = session.createQuery(" from CityE").list();
 		return cities;
 	}
 
